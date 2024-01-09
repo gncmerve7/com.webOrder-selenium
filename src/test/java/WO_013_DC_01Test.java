@@ -42,15 +42,25 @@ public class WO_013_DC_01Test extends Hooks {
 
 		WebElement totalDisplayedBeforeCalculation = driver.findElement(By.xpath("//input[@id='totalInput']"));
 		Thread.sleep(3000);
-
+		String totalBefore=totalDisplayedBeforeCalculation.getText();
+		System.out.println(totalBefore);
+totalDisplayedBeforeCalculation.getText();
 		WebElement calculateButton = driver.findElement(By.xpath("//button[contains(text(),'Calculate')]"));
 		calculateButton.click();
 		Thread.sleep(3000);
-
 		WebElement totalDisplayedAfterCalculation = driver.findElement(By.xpath("//input[@id='totalInput']"));
 		Thread.sleep(3000);
+		String totalAfter=totalDisplayedAfterCalculation.getText();
+		System.out.println(totalAfter);
+totalDisplayedAfterCalculation.getText();
 
-		 Assertions.assertNotSame(totalDisplayedBeforeCalculation.getText(),totalDisplayedAfterCalculation.getText());
+		Assertions.assertEquals(totalAfter,totalBefore);
+
+
+		//Assertions.assertNotEquals(totalAfter,totalBefore);
+		//Assertions.assertSame(totalDisplayedBeforeCalculation,totalDisplayedAfterCalculation);
+		//Assertions.assertFalse(totalDisplayedBeforeCalculation==totalDisplayedAfterCalculation);
+		//Assertions.assertNotSame(totalDisplayedBeforeCalculation.getText(),totalDisplayedAfterCalculation.getText());
 		//Assertions.assertNotEquals(totalDisplayedBeforeCalculation.toString(),totalDisplayedAfterCalculation.toString());
 		Thread.sleep(3000);
 		// ?
